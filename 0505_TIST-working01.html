@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>TIST Tanzania Sites</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+<script src="https://api.mapbox.com/mapbox-gl-js/v1.10.0/mapbox-gl.js"></script>
+<link href="https://api.mapbox.com/mapbox-gl-js/v1.10.0/mapbox-gl.css" rel="stylesheet" />
+<style>
+	body { margin: 0; padding: 0; }
+	#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+</style>
+</head>
+<body>
+<style>
+#menu {
+position: absolute;
+background: rgba(255, 255, 255, 0);
+padding: 20px;
+font-family: 'GT America Condensed Medium', 'Arial Unicode MS Regular', sans-serif;
+color: rgb(255, 255, 255);
+
+}
+    
+.mapboxgl-popup {
+    max-width: 400px;
+    font: 12px/20px 'GT America Condensed Medium', 'Arial Unicode MS Regular', sans-serif;
+    }
+</style>
+     
+<div id="map"></div>
+<div id="menu">
+<input id="ck9tgi5vj0grs1ipioeq5gv3w" 
+       type="radio" 
+       name="rtoggle" 
+       value="Tree Data"
+       checked="checked" />
+<label for="ck9tgi5vj0grs1ipioeq5gv3w"><b>TREE AUDIT</b></label>
+
+<input id="ck9ubs5wv1czt1iqpoxrth3xy" 
+       type="radio" 
+       name="rtoggle" 
+       value="Group Names" />
+<label for="ck9ubs5wv1czt1iqpoxrth3xy"><b>SMALL GROUPS</b></label>    
+
+<input
+id="ck9ubfi8s0xpb1ip25z7cgh0z"
+type="radio"
+name="rtoggle"
+value="Group Centers"/>
+<label for="ck9ubfi8s0xpb1ip25z7cgh0z"><b>CLUSTERS</b></label>
+
+
+
+
+        
+</div>
+<script>
+	mapboxgl.accessToken = 'pk.eyJ1IjoiZnJhbmttYW5kZWxsIiwiYSI6ImNrOXJrdTRsazBwMzgzbGx6OXV1ZmNvNmsifQ.43YEiJiJZUqZJLkPQYAY0w';
+var map = new mapboxgl.Map({
+container: 'map',
+style: 'mapbox://styles/frankmandell/ck9tgi5vj0grs1ipioeq5gv3w',
+zoom: 9,
+center: [36.592, -6.307]
+});
+
+    
+var layerList = document.getElementById('menu');
+var inputs = layerList.getElementsByTagName('input');
+ 
+function switchLayer(layer) {
+var layerId = layer.target.id;
+map.setStyle('mapbox://styles/frankmandell/' + layerId);
+}
+ 
+for (var i = 0; i < inputs.length; i++) {
+inputs[i].onclick = switchLayer;
+}
+    
+map.on('click', function(e) {
+  var features = map.queryRenderedFeatures(e.point, {
+    layers: ['TIST-groves']});
+
+if (!features.length) {
+    return display;
+  }
+    
+  var feature = features[0];
+  var popup = new mapboxgl.Popup({ offset: [0, -15] })
+    .setLngLat(feature.geometry.coordinates)
+    .setHTML('<p>' + '<b>Grove: </b>' + feature.properties["GROVE NAME"] + '<br>' + 
+             '<b>Group: </b>' + feature.properties["GROUP NAME"] + '<br>' +
+             '<b>Cluster: </b>' + feature.properties["GROUP CENTER"] + '<br>' +
+             '<b>Project Area: </b>' + feature.properties["PROJECT AREA"] + '<br>' +
+             
+             '<p>' + '<b>Number of Trees: </b>' + feature.properties["# OF TREES"] + '<br>' +
+             '<b>Tree Age: </b>' + feature.properties["TREE AGE"] + ' years old' + '<br>' +
+             '<b>Grove Area: </b>' + feature.properties["GROVE AREA (Ha)"] + ' Ha' + '<br>' + 
+             '<p>' + '<b>Visual Description: </b>' + feature.properties["VISUAL DESCRIPTION"] + '</p>'
+            
+            
+            
+            
+            
+            )
+    .addTo(map);
+});  
+    
+</script>
+ 
+</body>
+</html>
