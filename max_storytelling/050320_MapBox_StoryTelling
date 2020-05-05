@@ -1,0 +1,58 @@
+var config = {
+    style: 'mapbox://styles/stpmax/ck9rjkkeu0v0j1innteb8oqdb',
+    accessToken: 'pk.eyJ1Ijoic3RwbWF4IiwiYSI6ImNrOXJpazFhNzBvMWszbWx6ejdjanV4c2YifQ.OSdvJNghpaePRF1KuHWUSg',
+    showMarkers: false,
+    theme: 'light',
+    alignment: 'center',
+    title: 'Test Actor Map',
+    subtitle: 'test test test',
+    byline: 'presented by Funk Carbon',
+    footer: 'for Conflict Ubranism',
+    chapters: [
+        {
+            id: 'blackrock_hq',
+            title: 'Blackrock Financial, New York, NY',
+            image: 'add_logo',
+            description: 'Larrold Fink writes a letter',
+            location: {
+                center: [-73.97362, 40.75906 ],
+                zoom: 17.71,
+                pitch: 51.00,
+                bearing: -17.7
+            },
+
+        {
+            id: 'delta_hq',
+            title: 'Delta Airlines, Atlanta, Georgia',
+            image: '',
+            description: 'Delta Airlines buys El Cabrone offsets.',
+            location: {
+                center: [-need113.72917, 48.58938],
+                zoom: 12.92,
+                pitch: 39.50,
+                bearing: 36.00    
+    },
+{
+            id: 'growcleanair_hq',
+            title: 'Grow Clean Air, Maine',
+            image: '',
+            description: 'Grow Clean Air, an .',
+            location: {
+                center: [-68.85816, 44.04868],
+                zoom: 18.77,
+                pitch: 55.00,
+                bearing: -136.00        },
+
+
+{
+            id: 'CAAC_hq',
+            title: 'Clean Air Action Coorporation',
+            image: '',
+            description: 'Delta Airlines buys El Cabrone offsets.',
+            location: {
+                center: [-95.92316, 36.06000],
+                zoom: 17.71,
+                pitch: 48.50,
+                bearing: -136.45          },
+
+  
